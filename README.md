@@ -12,7 +12,7 @@ The model itself has not changed- no new data was included and the hyperparamete
 To install this package with [`pip`](https://pip.pypa.io/en/stable/), run
 
 ```bash
-pip install forecaster-plus
+pip install astro-forecaster
 ```
 
 As a basic example, here is how you would calculate the radius posterior of a 1 Jupiter mass object:
@@ -24,7 +24,7 @@ import numpy as np
 forecasted_radius_posterior = forecaster.Mpost2R(np.ones(int(1e3)), unit='Jupiter', classify=False)
 ```
 
-See the [demo notebook](https://github.com/ben-cassese/forecaster-plus/blob/master/demo.ipynb) for more examples.
+See the [demo notebook](https://github.com/ben-cassese/astro-forecaster/blob/main/demo.ipynb) for more examples.
 
 ## Changes
 -----
