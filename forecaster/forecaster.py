@@ -8,7 +8,6 @@ import h5py
 from astropy import constants as const
 import pkg_resources
 from warnings import simplefilter, warn
-from tqdm import tqdm
 from joblib import Parallel, delayed
 
 
@@ -164,7 +163,7 @@ def Mpost2R(mass_array, unit='Jupiter', classify=False, guardrails=True):
             mass_chunks.append(mass_array[i*int(1e6):min((i+1)*int(1e6),
                                                          len(mass_array))])
         q = Parallel(n_jobs=-1, prefer="threads")(delayed(internal)
-                                (chunk, unit, classify) for chunk in tqdm(mass_chunks))
+                                (chunk, unit, classify) for chunk in mass_chunks)
         if not classify:
             radii = np.hstack(q)
             return radii
@@ -401,7 +400,7 @@ def Rpost2M(radius_array, unit='Jupiter', grid_size=int(1e3), classify=False, gu
             radius_chunks.append(radius_array[i*int(500):min((i+1)*int(500),
                                                          len(radius_array))])
         q = Parallel(n_jobs=-1, prefer="threads")(delayed(internal)
-                                (chunk, unit, grid_size, classify) for chunk in tqdm(radius_chunks))
+                                (chunk, unit, grid_size, classify) for chunk in radius_chunks)
         if not classify:
             masses = np.hstack(q)
             return masses

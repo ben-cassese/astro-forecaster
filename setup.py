@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 
 setuptools.setup(
     name="astro-forecaster",
-    version="2.0.1",
+    version="2.0.2",
     author="Ben Cassese",
     author_email="b.c.cassese@columbia.edu",
     license="MIT",
@@ -18,7 +18,7 @@ setuptools.setup(
     description="Probabilistically forecast astronomical masses and radii",
     long_description=README,
     long_description_content_type="text/markdown",
-    install_requires=["numpy", "scipy", "astropy", "h5py", "setuptools", "tqdm", "joblib"],
+    install_requires=["numpy", "scipy", "astropy", "h5py", "setuptools", "joblib"],
     packages=["forecaster"],
     include_package_data=True
 )
