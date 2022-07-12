@@ -10,7 +10,7 @@ README = (HERE / "README.md").read_text()
 
 setuptools.setup(
     name="astro-forecaster",
-    version="2.0.0",
+    version="2.0.1",
     author="Ben Cassese",
     author_email="b.c.cassese@columbia.edu",
     license="MIT",
