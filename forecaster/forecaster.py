@@ -28,7 +28,7 @@ n_pop = 4
 # Mass to Radius
 ###############################################################################
 
-def Mpost2R(mass_array, unit='Jupiter', classify=False):
+def Mpost2R(mass_array, unit='Jupiter', classify=False, guardrails=True):
     """
     Description:
     ---------------
@@ -95,11 +95,12 @@ def Mpost2R(mass_array, unit='Jupiter', classify=False):
 
 
         # Ensure input within model expectations
-        if np.sum(mass_array > 3e5) > 0:
-            raise ValueError('Mass array contains values above 3e5 M_e, ' + \
+        if guardrails:
+            if np.sum(mass_array > 3e5) > 0:
+                raise ValueError('Mass array contains values above 3e5 M_e, ' + \
                          'outside of model expectation. Returning None')
-        if np.sum(mass_array < 3e-4) > 0:
-            raise ValueError('Mass array contains values below 3e-4 M_e, ' + \
+            if np.sum(mass_array < 3e-4) > 0:
+                raise ValueError('Mass array contains values below 3e-4 M_e, ' + \
                          'outside of model expectation. Returning None')
 
 
@@ -280,7 +281,7 @@ def Mstat2R(mean, onesig_neg, onesig_pos,
 # Radius to Mass
 ###############################################################################
 
-def Rpost2M(radius_array, unit='Jupiter', grid_size=int(1e3), classify=False):
+def Rpost2M(radius_array, unit='Jupiter', grid_size=int(1e3), classify=False, guardrails=True):
     """
     Description:
     ---------------
@@ -346,11 +347,12 @@ def Rpost2M(radius_array, unit='Jupiter', grid_size=int(1e3), classify=False):
             grid_size = 10
 
         # Ensure input within model expectations
-        if np.sum(radius_array > 1e2) > 0:
-            raise ValueError('Radius array contains values above 1e2 R_e, ' + \
+        if guardrails:
+            if np.sum(radius_array > 1e2) > 0:
+                raise ValueError('Radius array contains values above 1e2 R_e, ' + \
                          'outside of model expectation. Returning None')
-        if np.sum(radius_array < 1e-1) > 0:
-            raise ValueError('Mass array contains values below 1e-1 M_e, ' + \
+            if np.sum(radius_array < 1e-1) > 0:
+                raise ValueError('Mass array contains values below 1e-1 M_e, ' + \
                          'outside of model expectation. Returning None')
 
         # Get the data to convert to masses
